@@ -1,0 +1,130 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: contents;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #FF512F, #DD2476);
+  color: rgb(255, 255, 255);
+}
+
+
+
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  position: absolute; /* Add this */
+  top: 50%; /* Add this */
+  left: 50%; /* Add this */
+  transform: translate(-50%, -50%); /* Add this */
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.search-box input {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  outline: none;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.search-box input::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+.search-box button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  background: #FF512F;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-box button:hover {
+  background: #DD2476;
+}
+
+.current-weather {
+  margin-bottom: 30px;
+}
+
+.current-weather h2 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: aliceblue;
+}
+
+.current-weather p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  color: aliceblue;
+}
+
+.weather-icon {
+  font-size: 4rem;
+  margin: 15px 0;
+  color: aliceblue;
+}
+
+.forecast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast .day {
+  flex: 1;
+  margin: 0 8px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.forecast .day:hover {
+  transform: translateY(-10px);
+}
+
+.forecast .day p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: aliceblue;
+}
+
+.forecast .day-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: aliceblue;
+}
+
+.forecast .day-temp {
+  font-size: 1.3rem;
+  color: aliceblue;
+}
+
+.forecast-icon {
+  font-size: 2rem;
+  margin: 10px 0;
+  color: aliceblue;
+}
