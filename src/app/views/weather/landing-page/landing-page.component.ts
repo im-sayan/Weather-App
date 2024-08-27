@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LandingPageComponent implements OnInit{
   searchQuery: string = '';
   apiData: any = '';
-  apiKey: any = '29c8d07e4f9c49f6a6c142328242308';
+  apiKey: any = 'Your Api Key';
   lat: any = '';
   long: any = '';
   ipData: any = '';
