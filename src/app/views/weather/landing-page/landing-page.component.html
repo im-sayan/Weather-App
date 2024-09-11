@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-<div class="container" style="background-color: rgb(18, 28, 43); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);" *ngIf="queryData != ''">
+<div class="container" style="background-color: rgba(7, 20, 43, 0.685); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);" *ngIf="queryData != ''">
+  <!-- <div class="container" style="background-color: rgba(18, 28, 43, 0.788); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);" *ngIf="queryData != ''"> -->
 
   <!-- Loader -->
   <div class="loader" *ngIf="loading" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
@@ -16,9 +17,10 @@
       </button>
 
       <!-- Location Permission Icon -->
-      <button (click)="GetLocation()" style="margin-left: 10px; background-color: #007bff; border: none; border-radius: 10px; padding: 10px 20px; color: white; cursor: pointer;">
-        <i class="fas fa-location"></i>
+      <button (click)="GetLocation()" style="margin-left: 30px; background-color: #007bff38; border: none; border-radius: 50%; padding: 5px; color: white; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+        <i class="fas fa-location" style="font-size: 20px;"></i>
       </button>
+      
     </div>
 
     <div class="current-weather" style="text-align: center; color: white;">
@@ -33,11 +35,18 @@
       <p id="temp" style="font-size: 3rem; font-weight: 700; margin-top: 20px;">{{apiData.current.temp_c}}°C</p>
       <p id="description" style="font-size: 1.2rem; font-weight: 400;">{{apiData.current.condition.text}}</p>
 
-      <div class="details" style="display: flex; justify-content: space-around; margin-top: 30px;">
-        <p style="font-size: 1.2rem;"><i class="fas fa-tint"></i> Humidity: {{apiData.current.humidity}}%</p>
-        <p style="font-size: 1.2rem;"><i class="fas fa-thermometer-half"></i> Real Feel: {{apiData.current.feelslike_c}}°C</p>
-        <p style="font-size: 1.2rem;"><i class="fas fa-wind"></i> Wind Speed: {{apiData.current.wind_kph}} kph</p>
+      <div class="details" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 30px;">
+        <p style="font-size: 1rem; text-align: center;"><i class="fas fa-tint"></i> Humidity: {{apiData.current.humidity}} %</p>
+        <p style="font-size: 1rem; text-align: center;"><i class="fas fa-thermometer-half"></i> Real Feel: {{apiData.current.feelslike_c}} °C</p>
+        <p style="font-size: 1rem; text-align: center;"><i class="fas fa-wind"></i> Wind Speed: {{apiData.current.wind_kph}} kph</p>
+        <p style="font-size: 1rem; text-align: center;"><i class="fas fa-cloud"></i> Cloud Cover: {{apiData.current.cloud}} %</p>
+        <p style="font-size: 1rem; text-align: center;"><i class="fas fa-sun"></i> UV Index: {{apiData.current.uv}}</p>
+        <p style="font-size: 1rem; text-align: center;"><i class="bi bi-speedometer2"></i> Pressure: {{apiData.current.pressure_mb}} mb</p>
+        <p style="font-size: 1rem; text-align: center;"><i class="fa-solid fa-location-arrow"></i> Wind Direction: {{apiData.current.wind_dir}}</p>
+        <p style="font-size: 1rem; text-align: center;"><i class="fa-solid fa-cloud-rain"></i> Precipitation: {{apiData.current.precip_mm}} mm</p>
       </div>
+      
+      
     </div>
 
     <div class="forecast" style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 40px;">

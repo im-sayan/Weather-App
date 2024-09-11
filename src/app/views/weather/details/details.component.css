@@ -1,12 +1,11 @@
 body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  display: contents;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
+
 
 .container2 {
   background-color: rgb(23, 33, 49);
@@ -30,17 +29,16 @@ body {
 
 .modal {
   background-color: #172131;
-  padding: 30px; /* Add more padding for a spacious feel */
+  padding: 30px;
   border-radius: 15px;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 900px; /* Increased max width for larger modal */
-  margin: 0 auto;
-  max-height: 90vh; /* Allow for a larger height */
-  overflow-y: auto; /* Ensure content scrolls if too tall */
-  z-index: 1050; /* High z-index to stay above all other content */
-  position: relative; /* Keep it in relation to the document flow */
-  margin-top: 10px;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1050;
+  position: relative;
+  top: 10px;
 }
 
 .modal-header {

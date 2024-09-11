@@ -99,7 +99,7 @@ body {
   text-align: center;
   transition: transform 0.3s ease;
   cursor: pointer;
-  height: 100px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

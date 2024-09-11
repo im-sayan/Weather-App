@@ -2,11 +2,11 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
 />
-<div class="container2 modal fade" id="details" tabindex="-1" aria-labelledby="detailsLabel" aria-hidden="true" style="background-color: rgb(23, 33, 49); padding: 20px; color: white;">
+<div class="container2 modal fade" id="details" tabindex="-1" aria-labelledby="detailsLabel" aria-hidden="true" style="background-color: rgba(7, 20, 43, 0.685); backdrop-filter: blur(10px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.596); padding: 20px; color: white;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="border-bottom: none;">
-        <h5 id="detailsLabel">Hourly Forecast</h5>
+        <h5 id="detailsLabel" style="color: #ffbb00">Hourly Forecast</h5>
       </div>
 
       <div class="details-row" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px; background-color: rgb(28, 38, 53); border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
@@ -72,10 +72,10 @@
             </style>
             <div class="hour" *ngFor="let weather of selectedDay.hour; let i = index" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
               <div class="hour-time" style="flex: 1; color: white; font-weight: bold; font-size: 1rem;">{{ weather.time | date: 'shortTime' }}</div>
-              <div class="hour-temp" style="flex: 1; color: #ffcc00; font-weight: bold; font-size: 1.2rem; text-align: center;">{{weather.temp_c}}°C</div>
-              <div class="hour-desc" style="flex: 2; color: white; font-size: 1rem; text-align: center;">{{weather.condition.text}}</div>
-              <div class="hour-rain" style="flex: 1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">⛈️ {{weather.precip_mm}}%</div>
-              <div class="hour-humidity" style="flex: 1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">💧 {{weather.humidity}}%</div>
+              <div class="hour-temp" style="flex: 1.5; color: #ffcc00; font-weight: bold; font-size: 1.2rem; text-align: center;">{{weather.temp_c}}°C</div>
+              <div class="hour-desc" style="flex: 2.1; color: white; font-size: 1rem; text-align: center;">{{weather.condition.text}}</div>
+              <div class="hour-rain" style="flex: 2.1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">⛈️ {{weather.precip_mm}} mm</div>
+              <div class="hour-humidity" style="flex: 1.2; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">💧 {{weather.humidity}}%</div>
               <div class="hour-wind" style="flex: 1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">🌬️ {{weather.wind_kph}} kph</div>
             </div>
           </div>
