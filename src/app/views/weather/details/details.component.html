@@ -1,0 +1,88 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<div class="container2 modal fade" id="details" tabindex="-1" aria-labelledby="detailsLabel" aria-hidden="true" style="background-color: rgb(23, 33, 49); padding: 20px; color: white;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: none;">
+        <h5 id="detailsLabel">Hourly Forecast</h5>
+      </div>
+
+      <div class="details-row" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px; background-color: rgb(28, 38, 53); border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+        <!-- Left Section: City Name and Date -->
+        <div class="left-section" style="flex: 1; padding: 20px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 15px; display: flex; flex-direction: column;">
+          <div class="card" style="color: white; background: transparent; border: none; box-shadow: none; flex: 1;">
+            <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">📍 Location</p>
+            <h2 id="city-name" style="margin-bottom: 10px; font-weight: 600;">{{locationDetails.name}} ({{locationDetails.region}})</h2>
+            <p id="date" style="margin-bottom: 20px; font-size: 1rem; color: rgba(255, 255, 255, 0.7);">{{locationDetails.localtime | date:'EEEE, MMMM d, y'}}</p>
+          </div>
+        </div>
+      
+        <!-- Right Section: Sunrise/Sunset/Moonrise/Moonset Card -->
+        <div class="right-section" style="flex: 1; padding: 20px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 15px; display: flex; flex-direction: column;">
+          <div class="card" style="color: white; background: transparent; border: none; box-shadow: none; flex: 1;">
+            <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">🌟 Astro Data</p>
+            <ul class="list-group list-group-flush" style="list-style-type: none; padding-left: 0;">
+              <li class="list-group-item" style="background-color: transparent; color: white; padding: 10px 0; border: none;">
+                <i class="fas fa-sun"></i> Sunrise: {{selectedDay.astro.sunrise}}
+              </li>
+              <li class="list-group-item" style="background-color: transparent; color: white; padding: 10px 0; border: none;">
+                <i class="fas fa-cloud-sun"></i> Sunset: {{selectedDay.astro.sunset}}
+              </li>
+              <li class="list-group-item" style="background-color: transparent; color: white; padding: 10px 0; border: none;">
+                <i class="fas fa-moon"></i> Moonrise: {{selectedDay.astro.moonrise}}
+              </li>
+              <li class="list-group-item" style="background-color: transparent; color: white; padding: 10px 0; border: none;">
+                <i class="fas fa-moon"></i> Moonset: {{selectedDay.astro.moonset}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <div class="modal-body" style="max-height: 400px; padding: 20px; background-color: rgb(28, 38, 53); border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+        <!-- Hourly Weather Details -->
+        <div class="hourly-weather">
+          <!-- Column Headers -->
+          <div class="hourly-headers" style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px; background-color: rgba(45, 59, 74, 0.8); border-radius: 10px; z-index: 1;">
+            <div class="header-time" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: left;">Time</div>
+            <div class="header-temp" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: center;">Temp</div>
+            <div class="header-desc" style="flex: 2; color: #ffcc00; font-weight: bold; text-align: center;">Condition</div>
+            <div class="header-humidity" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: right;">Precipitation</div>
+            <div class="header-humidity" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: right;">Humidity</div>
+            <div class="header-wind" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: right;">Wind Speed</div>
+          </div>
+      
+          <!-- Scrollable Hourly Weather Data -->
+          <div class="hourly-data" style="max-height: 300px; overflow-y: scroll; overflow-x: hidden; scrollbar-width: none; -ms-overflow-style: none;">
+            <!-- Webkit Scrollbars -->
+            <style>
+              .hourly-data::-webkit-scrollbar {
+                width: 0;
+                background: transparent; /* Optional: to hide the scrollbar track */
+              }
+            </style>
+            <div class="hour" *ngFor="let weather of selectedDay.hour; let i = index" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+              <div class="hour-time" style="flex: 1; color: white; font-weight: bold; font-size: 1rem;">{{ weather.time | date: 'shortTime' }}</div>
+              <div class="hour-temp" style="flex: 1; color: #ffcc00; font-weight: bold; font-size: 1.2rem; text-align: center;">{{weather.temp_c}}°C</div>
+              <div class="hour-desc" style="flex: 2; color: white; font-size: 1rem; text-align: center;">{{weather.condition.text}}</div>
+              <div class="hour-rain" style="flex: 1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">⛈️ {{weather.precip_mm}}%</div>
+              <div class="hour-humidity" style="flex: 1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">💧 {{weather.humidity}}%</div>
+              <div class="hour-wind" style="flex: 1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">🌬️ {{weather.wind_kph}} kph</div>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

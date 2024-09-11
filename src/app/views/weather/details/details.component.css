@@ -1,0 +1,161 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: contents;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container2 {
+  background-color: rgb(23, 33, 49);
+  padding: 40px; /* Increased padding for a bigger look */
+  color: white;
+  width: 100%;
+  max-width: 700px; /* Maximum width of the main card */
+  margin: 0 auto; /* Center the main card */
+  border-radius: 15px; /* Smooth rounded corners */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+  text-align: center; /* Center content inside the main card */
+  position: relative; /* Ensure it's part of the flow and can be overlapped */
+  z-index: 5; /* Ensure it is above background layers but below the modal */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+}
+.container2::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
+
+
+.modal {
+  background-color: #172131;
+  padding: 30px; /* Add more padding for a spacious feel */
+  border-radius: 15px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 900px; /* Increased max width for larger modal */
+  margin: 0 auto;
+  max-height: 90vh; /* Allow for a larger height */
+  overflow-y: auto; /* Ensure content scrolls if too tall */
+  z-index: 1050; /* High z-index to stay above all other content */
+  position: relative; /* Keep it in relation to the document flow */
+  margin-top: 10px;
+}
+
+.modal-header {
+  font-size: 2.5rem; /* Larger header text */
+  margin-top: 0px;
+  margin-bottom: 0px; /* Remove bottom margin */
+  padding-bottom: 0px;
+}
+
+.modal-body {
+  padding: 20px; /* Increase padding inside modal */
+  margin-top: -85px; /* Remove top margin */
+  padding-top: 10px;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none; 
+}
+
+
+.modal-body::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
+
+h2#city-name {
+  font-size: 2.5rem; /* Make city name larger */
+  margin-bottom: 10px;
+}
+
+h5#detailsLabel{
+  color: rgb(7, 143, 167);
+}
+
+p#date {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hourly-weather {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px; /* Add more space above the hourly forecast */
+}
+
+.hour {
+  display: flex;
+  justify-content: space-between; /* Ensure space between columns */
+  align-items: center;
+  padding: 15px; /* Padding for larger card look */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  width: 100%; /* Full width for each card */
+  max-width: 900px; /* Increased width for each card */
+  height: auto; /* Auto height based on content */
+  margin: 0 auto; /* Center the cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.hour:hover {
+  transform: translateY(-2px); /* Hover effect */
+}
+
+/* Time column */
+.hour-time {
+  flex: 1; /* Take up 1 unit of flex space */
+  font-size: 1.2rem; /* Larger font */
+  text-align: left; /* Align text to the left */
+}
+
+/* Weather icon column */
+.hourly-icon {
+  flex: 0.5; /* Half a unit of flex space */
+  font-size: 1.5rem; /* Increase icon size */
+  text-align: left; /* Align icon to the left */
+}
+
+/* Temperature column */
+.hour-temp {
+  flex: 1; /* Take up 1 unit of flex space */
+  font-size: 1.1rem;
+  margin: 0 28px;
+  text-align: left; /* Align text to the left */
+}
+
+/* Description column */
+.hour-desc {
+  flex: 2; /* Allow more space for description */
+  font-size: 1.1rem;
+  text-align: justify; /* Justify text */
+  white-space: normal; /* Allow text to wrap */
+  word-wrap: break-word; /* Break long words */
+  word-break: break-word;
+}
+
+/* Humidity column */
+.hour-humidity {
+  flex: 1.2; /* Take up a bit more space */
+  font-size: 1.1rem;
+  margin: 0 18px;
+  text-align: center; /* Center align for humidity */
+}
+
+/* Wind column */
+.hour-wind {
+  flex: 1; /* Take up 1 unit of flex space */
+  font-size: 1.1rem;
+  margin: 0 28px;
+  text-align: right; /* Align text to the right */
+}
+
+
+
+/* *
+*
+*
+*
+* */
+

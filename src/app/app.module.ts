@@ -6,13 +6,16 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { CommonModule } from '@angular/common';
 import { LandingPageComponent } from '../app/views/weather/landing-page/landing-page.component';
+import {DetailsComponent} from '../app/views/weather/details/details.component'
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    DetailsComponent
+
   ],
   imports: [
     BrowserModule,
