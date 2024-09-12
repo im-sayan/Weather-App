@@ -16,6 +16,7 @@
             <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">📍 Location</p>
             <h2 id="city-name" style="margin-bottom: 10px; font-weight: 600;">{{locationDetails.name}} ({{locationDetails.region}})</h2>
             <p id="date" style="margin-bottom: 20px; font-size: 1rem; color: rgba(255, 255, 255, 0.7);">{{locationDetails.localtime | date:'EEEE, MMMM d, y'}}</p>
+            <p id="date" style="margin-bottom: 20px; font-size: 1.5rem; color: rgba(255, 255, 255, 0.7);">Chance of Rain: {{selectedDay.day.daily_chance_of_rain}} %</p>
           </div>
         </div>
       
@@ -74,9 +75,9 @@
               <div class="hour-time" style="flex: 1; color: white; font-weight: bold; font-size: 1rem;">{{ weather.time | date: 'shortTime' }}</div>
               <div class="hour-temp" style="flex: 1.5; color: #ffcc00; font-weight: bold; font-size: 1.2rem; text-align: center;">{{weather.temp_c}}°C</div>
               <div class="hour-desc" style="flex: 2.1; color: white; font-size: 1rem; text-align: center;">{{weather.condition.text}}</div>
-              <div class="hour-rain" style="flex: 2.1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">⛈️ {{weather.precip_mm}} mm</div>
-              <div class="hour-humidity" style="flex: 1.2; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">💧 {{weather.humidity}}%</div>
-              <div class="hour-wind" style="flex: 1; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-align: right;">🌬️ {{weather.wind_kph}} kph</div>
+              <div class="hour-rain" style="flex: 2.1; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: right;">⛈️ {{weather.precip_mm}} mm</div>
+              <div class="hour-humidity" style="flex: 1.2; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: right;">💧 {{weather.humidity}}%</div>
+              <div class="hour-wind" style="flex: 1; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: right;">🌬️ {{weather.wind_kph}} kph</div>
             </div>
           </div>
       
