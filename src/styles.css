@@ -33,5 +33,3 @@ body.landingpage {
   object-fit: cover;
   max-width: 100%; /* Add this to prevent the GIF from exceeding the container's width */
 }
-
-/* Clouds and Rain Effects - Same as before */
