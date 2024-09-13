@@ -17,10 +17,6 @@ export class DetailsComponent implements OnInit{
       
     ngOnInit(): void{
       this.selectedDay = history.state.selectedDay;
-      console.log(this.selectedDay,"====================>>>");
       this.locationDetails = JSON.parse(localStorage.getItem('location') || '{}');
-      console.log(this.locationDetails.name,'*******************');
-      
     }
-
 }
