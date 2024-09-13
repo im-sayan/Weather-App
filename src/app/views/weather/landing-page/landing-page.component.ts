@@ -24,6 +24,11 @@ export class LandingPageComponent implements OnInit{
 
   errormodel: boolean = false;
 
+  hasAlert = false;
+  showAlert = false;
+  alerts : any = [];
+  aiq: any = '';
+
   selectday(index: any) {
     this.selectedDay = this.forcastData[index];
     this.router.navigate(['/details-forcast'], { state: { selectedDay: this.selectedDay } });
@@ -44,7 +49,7 @@ export class LandingPageComponent implements OnInit{
     if(getCordinate != null ){
       this.queryData = getCordinate
     }
-    const apiUrl = `https://api.weatherapi.com/v1/forecast.json?q=${this.queryData}&days=5&key=${this.apiKey}`;
+    const apiUrl = `https://api.weatherapi.com/v1/forecast.json?q=${this.queryData}&days=5&alerts=yes&aqi=yes&key=${this.apiKey}`;
     
     this.http.get(apiUrl).subscribe(
       (response) => {
@@ -52,10 +57,40 @@ export class LandingPageComponent implements OnInit{
         this.forcastData = [];
         this.location = this.apiData.location;
         localStorage.setItem('location', JSON.stringify(this.location));
+        this.aiq = this.apiData.current.air_quality['us-epa-index'];
+
         for(let item of this.apiData.forecast.forecastday){
           this.forcastData.push(item);
         }
         this.loading = false;  // Hide loader
+        
+        // let forcastalert: any[] = [
+        //   {
+        //     "headline": "NWS New York City - Upton (Long Island and New York City)",
+        //     "msgtype": null,
+        //     "severity": null,
+        //     "urgency": null,
+        //     "areas": null,
+        //     "category": "Extreme temperature value",
+        //     "certainty": null,
+        //     "event": "Heat Advisory",
+        //     "note": null,
+        //     "effective": "2022-07-21T19:38:00+00:00",
+        //     "expires": "2022-07-25T00:00:00+00:00",
+        //     "desc": "...HEAT ADVISORY REMAINS IN EFFECT UNTIL 8 PM EDT SUNDAY... * WHAT...Heat index values up to 105. * WHERE...Eastern Passaic Hudson Western Bergen Western Essex Eastern Bergen and Eastern Essex Counties. * WHEN...Until 8 PM EDT Sunday. * IMPACTS...High temperatures and high humidity may cause heat illnesses to occur.",
+        //     "instruction": ""
+        //   }
+        // ];
+  
+        // Push alerts to the alerts array
+        for (let item of this.apiData.alerts.alert) {
+          this.alerts.push(item);
+        }
+        if(this.alerts.length > 0){
+          this.hasAlert = true;
+        }else{
+          this.hasAlert = false;
+        }
       },
       (error) => {
         this.queryData = '';
@@ -123,5 +158,29 @@ export class LandingPageComponent implements OnInit{
       }
     );
   }
+
+  getAiqDescription(): string {
+    if (this.aiq <= 2) {
+      return 'Good';
+    } else if (this.aiq <= 4) {
+      return 'Moderate';
+    } else {
+      return 'Worst';
+    }
+  }
+
+  getAiqStyle(): object {
+    switch (this.getAiqDescription()) {
+      case 'Good':
+        return { color: 'green', fontWeight: 'bold' };
+      case 'Moderate':
+        return { color: 'orange', fontWeight: 'bold' };
+      case 'Worst':
+        return { color: 'red', fontWeight: 'bold' };
+      default:
+        return {};
+    }
+  }
   
 }
+

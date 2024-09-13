@@ -22,6 +22,10 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.container::-webkit-scrollbar {
+  display: none;
+}
+
 .search-box {
   display: flex;
   justify-content: center;
@@ -371,3 +375,96 @@ body {
 .try-again-btn:hover {
   background-color: #ffa500;
 }
+
+
+/* Alert Icon Glow Animation */
+.alert-icon-container i {
+  color: #ffcc00;
+  font-size: 20px;
+  cursor: pointer;
+  animation: glow 0.8s infinite alternate;
+}
+
+/* Glow keyframes */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 1px #ffcc00, 0 0 2px #ffcc00, 0 0 3px #ffcc00, 0 0 4px #ffcc00;
+  }
+  to {
+    text-shadow: 0 0 15px #ffcc00, 0 0 30px #ffcc00, 0 0 45px #ffcc00, 0 0 55px #ffcc00;
+  }
+}
+
+.alert-icon-container {
+  position: relative;
+  display: inline-block; /* Ensure the popup is positioned relative to the icon */
+}
+
+.alert-popup {
+  position: absolute;
+  top: 0; /* Adjust as needed */
+  left: -300px; /* Position to the left of the icon, increased for wider popup */
+  background: rgb(92, 1, 1); /* Semi-transparent background */
+  color: white;
+  border-radius: 9px;
+  padding: 15px; /* Adjust padding for a bit more space */
+  box-shadow: 0 4px 8px rgb(92, 1, 1);
+  width: 320px; /* Increased width for a rectangular shape */
+  max-height: 300px; /* Set a max-height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  visibility: hidden; /* Hide by default */
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Hide scrollbar */
+.alert-popup::-webkit-scrollbar {
+  width: 0; /* Hide scrollbar for Webkit browsers */
+  background: transparent; /* Ensure scrollbar background is transparent */
+}
+
+.alert-popup {
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Show popup on hover */
+.alert-icon-container:hover .alert-popup {
+  visibility: visible;
+  opacity: 1;
+}
+
+.alert-popup ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.alert-popup li {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  align-items: left;
+  text-align: left;
+  color: rgb(252, 252, 252);
+  font-family:'Times New Roman', Times, serif;
+}
+
+.alert-popup strong {
+  display: block;
+}
+
+/* Alternating background colors */
+.alert-popup li:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.356); /* Light transparent background */
+}
+
+.alert-popup li:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.356); /* Slightly darker transparent background */
+}
+
+.alert-popup li:last-child {
+  margin-bottom: 0; /* Remove margin from last item */
+}
+
+

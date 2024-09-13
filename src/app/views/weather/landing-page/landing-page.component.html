@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-<div class="container" style="background-color: rgba(7, 20, 43, 0.685); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);" *ngIf="queryData != ''">
-  <!-- <div class="container" style="background-color: rgba(18, 28, 43, 0.788); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);" *ngIf="queryData != ''"> -->
-
+<div class="container" style="background-color: rgba(7, 20, 43, 0.685); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); overflow: auto; margin: auto; max-height: 90vh;" *ngIf="queryData != ''">
   <!-- Loader -->
   <div class="loader" *ngIf="loading" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
     <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #ffcc00;"></i>
@@ -17,23 +15,41 @@
       </button>
 
       <!-- Location Permission Icon -->
-      <button (click)="GetLocation()" style="margin-left: 30px; background-color: #007bff38; border: none; border-radius: 50%; padding: 5px; color: white; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-        <i class="fas fa-location" style="font-size: 20px;"></i>
-      </button>
-      
+      <div style="display: flex; align-items: center; margin-left: 30px;">
+        <button (click)="GetLocation()" style="background-color: #007bff38; border: none; border-radius: 50%; padding: 5px; color: white; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+          <i class="fas fa-location" style="font-size: 20px;"></i>
+        </button>
+
+        <!-- Alert Icon with Popup -->
+        <div class="alert-icon-container" style="margin-left: 30px;" *ngIf="hasAlert == true">
+          <i class="fas fa-exclamation-triangle" style="color: #d30000; font-size: 30px; cursor: pointer;" (mouseenter)="showAlert = true" (mouseleave)="showAlert = false"></i>
+
+          <!-- Alert Popup -->
+          <div class="alert-popup">
+            <ul style="list-style-type: none; padding: 0; margin: 0;">
+              <li *ngFor="let alert of alerts" style="margin-bottom: 10px; align-items: left; text-align: left;">
+                <strong style="color:rgb(235, 145, 60);">Title:- {{ alert.category }}</strong> <br>
+                <strong style="color:rgb(243, 89, 34);">Alert:- {{ alert.event }}</strong> <br>
+                <strong>Description:</strong><p style="font-size: 0.8rem;">{{ alert.desc }}</p><br>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="current-weather" style="text-align: center; color: white;">
       <h2 id="city-name" style="font-size: 2.5rem; font-weight: 700; color: #ffcc00;">{{apiData.location.name}} ({{apiData.location.region}})</h2>
       <p id="date" style="font-size: 1.2rem; margin-bottom: 30px;">{{apiData.location.localtime | date: 'EEEE, MMMM d, y'}}</p>
 
-      <!-- <div class="weather-icon" *ngIf="apiData.current.condition.text == 'Sunny'">
-        <i class="fas fa-sun" style="font-size: 5rem; color: #ffcc00;"></i>
-      </div> -->
-      <!-- Add similar condition icons for other weather states -->
-
       <p id="temp" style="font-size: 3rem; font-weight: 700; margin-top: 20px;">{{apiData.current.temp_c}}°C</p>
       <p id="description" style="font-size: 1.2rem; font-weight: 400;">{{apiData.current.condition.text}}</p>
+      <p id="temp" style="font-size: 1.2rem; font-weight: 700; margin-top: 20px;">
+        Air Quality: {{aiq}}
+      </p>
+      <p id="aiq-description" [ngStyle]="getAiqStyle()" style="font-size: 1.2rem; font-weight: 400; margin-top: 10px;">
+        {{getAiqDescription()}}
+      </p>
 
       <div class="details" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 30px;">
         <p style="font-size: 1rem; text-align: center;"><i class="fas fa-tint"></i> Humidity: {{apiData.current.humidity}} %</p>
@@ -45,27 +61,20 @@
         <p style="font-size: 1rem; text-align: center;"><i class="fa-solid fa-location-arrow"></i> Wind Direction: {{apiData.current.wind_dir}}</p>
         <p style="font-size: 1rem; text-align: center;"><i class="fa-solid fa-cloud-rain"></i> Precipitation: {{apiData.current.precip_mm}} mm</p>
       </div>
-      
-      
     </div>
 
     <div class="forecast" style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 40px;">
       <div class="day" *ngFor="let weather of forcastData; let i = index" (click)="selectday(i)" style="background: linear-gradient(145deg, rgba(50, 70, 90, 1), rgba(25, 35, 50, 1)); padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); width: 18%; text-align: center; cursor: pointer;">
         <p class="day-name" style="font-size: 1.2rem; color: #ffcc00;">{{weather.date | date: 'EEE'}}</p>
-        <!-- <div class="forecast-icon" *ngIf="weather.day.condition.text == 'Sunny'">
-          <i class="fas fa-sun" style="font-size: 2rem; color: #ffcc00;"></i>
-        </div> -->
-        <!-- Add icons for different conditions here -->
         <p class="day-temp" style="font-size: 1.4rem; color: white; margin-top: 10px;">{{weather.day.avgtemp_c}}°C</p>
-        <p class="day-desc" style="font-size: 1rem; color: rgba(255, 255, 255, 0.7);">{{weather.day.condition.text}}</p>
+        <p class="day-desc" style="font-size: 1rem; color: rgb(255, 255, 255);">{{weather.day.condition.text}}</p>
       </div>
     </div>
   </div>
 </div>
-   
-<div class="no-location-card" *ngIf="errormodel == true ">
+<div class="no-location-card" *ngIf="errormodel == true">
   <div class="icon">
-    <i class="fas fa-exclamation-triangle"></i> <!-- Font Awesome warning icon -->
+    <i class="fas fa-exclamation-triangle"></i>
   </div>
   <div class="message">
     <h2>Location Not Found</h2>
