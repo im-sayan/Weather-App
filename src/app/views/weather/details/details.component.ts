@@ -12,6 +12,7 @@ export class DetailsComponent implements OnInit{
   selectedDay: any = '';
   hourly:any = [];
   locationDetails: any = '';
+  IsDay: any = '';
 
   constructor(private http: HttpClient, private toastr: ToastrService, private router: Router) {}
       
@@ -32,7 +33,10 @@ export class DetailsComponent implements OnInit{
   
     // Retrieve locationDetails from localStorage
     this.locationDetails = JSON.parse(localStorage.getItem('location') || '{}');
+    this.IsDay = localStorage.getItem('is_day');
     console.log(this.selectedDay, "this.selectedDay");
+    console.log(this.IsDay,"this.IsDay");
+    
   }
   
   

@@ -66,6 +66,7 @@ export class LandingPageComponent implements OnInit {
         this.alerts = [];
         this.location = this.apiData.location;
         localStorage.setItem('location', JSON.stringify(this.location));
+        localStorage.setItem('is_day', this.apiData.current.is_day);
         localStorage.setItem('cordinate', JSON.stringify({ lat: this.location.lat, lon: this.location.lon }));
         this.aiq = this.apiData.current.air_quality['us-epa-index'];
 

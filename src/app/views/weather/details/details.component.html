@@ -2,7 +2,7 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
 />
-<div class="container2 modal fade" id="details" tabindex="-1" aria-labelledby="detailsLabel" aria-hidden="true" style="background-color: rgba(7, 20, 43, 0.685); backdrop-filter: blur(10px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.596); padding: 20px; color: white;">
+<div class="container2 modal fade" id="details" tabindex="-1" aria-labelledby="detailsLabel" aria-hidden="true" style="background-color: rgba(7, 20, 43, 0.753); backdrop-filter: blur(10px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.596); padding: 20px; color: white;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="border-bottom: none;">
@@ -14,14 +14,23 @@
         <div class="left-section" style="flex: 1; padding: 20px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 15px; display: flex; flex-direction: column;">
           <div class="card" style="color: white; background: transparent; border: none; box-shadow: none; flex: 1;">
             <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">📍 Location</p>
-            <h2 id="city-name" style="margin-bottom: 10px; font-weight: 600;">{{locationDetails.name}} ({{locationDetails.region}})</h2>
+            <h3 id="city-name" style="margin-bottom: 10px; font-weight: 600;">{{locationDetails.name}} ({{locationDetails.region}})</h3>
             <p id="date" style="margin-bottom: 20px; font-size: 1rem; color: rgba(255, 255, 255, 0.7);">{{locationDetails.localtime | date:'EEEE, MMMM d, y'}}</p>
-            <p id="date" style="margin-bottom: 20px; font-size: 1.5rem; color: rgba(255, 255, 255, 0.7);">Chance of Rain: {{selectedDay.day.daily_chance_of_rain}} %</p>
+            <p id="avg-temp" style="margin-bottom: 10px; font-size: 1.1rem; color: #ffcc00;" *ngIf="IsDay == 1">
+              Avg Temp: {{selectedDay.day.avgtemp_c}}°C <i class="fas fa-sun" style="padding-left: 8px;"></i>
+            </p>
+            <p id="avg-temp" style="margin-bottom: 10px; font-size: 1.1rem; color: #ffcc00;" *ngIf="IsDay == 0">
+              Avg Temp: {{selectedDay.day.avgtemp_c}}°C <i class="fa-solid fa-moon" style="padding-left: 8px;"></i>
+            </p>
+            <p id="temp-range" style="margin-bottom: 10px; font-size: 1rem; color: rgba(255, 255, 255, 0.9);">
+              Max Temp: {{selectedDay.day.maxtemp_c}}°C | Min Temp: {{selectedDay.day.mintemp_c}}°C
+            </p>
+            <p id="date" style="margin-bottom: 20px; font-size: 1.3rem; color: rgba(255, 255, 255, 0.7);">Chance of Rain: {{selectedDay.day.daily_chance_of_rain}} %</p>
           </div>
         </div>
       
         <!-- Right Section: Sunrise/Sunset/Moonrise/Moonset Card -->
-        <div class="right-section" style="flex: 1; padding: 20px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 15px; display: flex; flex-direction: column;">
+        <div class="right-section" style="flex: 1; padding: 15px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 15px; display: flex; flex-direction: column;">
           <div class="card" style="color: white; background: transparent; border: none; box-shadow: none; flex: 1;">
             <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">🌟 Astro Data</p>
             <ul class="list-group list-group-flush" style="list-style-type: none; padding-left: 0;">
@@ -35,7 +44,10 @@
                 <i class="fas fa-moon"></i> Moonrise: {{selectedDay.astro.moonrise}}
               </li>
               <li class="list-group-item" style="background-color: transparent; color: white; padding: 10px 0; border: none;">
-                <i class="fas fa-moon"></i> Moonset: {{selectedDay.astro.moonset}}
+                <i class="fa-solid fa-cloud-moon"></i> Moonset: {{selectedDay.astro.moonset}}
+              </li>
+              <li class="list-group-item" style="background-color: transparent; color: white; padding: 10px 0; border: none;">
+                <i class="fa-duotone fa-solid fa-moon"></i> Moon Phase: {{selectedDay.astro.moon_phase}}
               </li>
             </ul>
           </div>

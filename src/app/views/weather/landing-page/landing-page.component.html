@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-<div class="container" style="background-color: rgba(7, 20, 43, 0.685); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); overflow: auto; margin: auto; max-height: 90vh;" *ngIf="queryData != ''">
+<div class="container" style="background-color: rgba(7, 20, 43, 0.753); padding: 20px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); overflow: auto; margin: auto; max-height: 90vh;" *ngIf="queryData != ''">
   <!-- Loader -->
   <div class="loader" *ngIf="loading" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
     <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #ffcc00;"></i>
@@ -50,7 +50,11 @@
       <p id="date" style="font-size: 1.2rem; margin-bottom: 30px;">{{apiData.location.localtime | date: 'EEEE, MMMM d, y'}}</p>
 
       <p id="temp" style="font-size: 3rem; font-weight: 700; margin-top: 20px;">{{apiData.current.temp_c}}°C</p>
+      <p id="temp-range" style="font-size: 1.2rem; font-weight: 700; margin-top: 10px; color: #ffcc00">
+        Max: {{apiData.forecast.forecastday[0].day.maxtemp_c}}°C | Min: {{apiData.forecast.forecastday[0].day.mintemp_c}}°C
+      </p>
       <p id="description" style="font-size: 1.2rem; font-weight: 400;">{{apiData.current.condition.text}}</p>
+  
       <p id="temp" style="font-size: 1.2rem; font-weight: 700; margin-top: 20px;">
         Air Quality: {{aiq}}
       </p>
@@ -74,6 +78,10 @@
       <div class="day" *ngFor="let weather of forcastData; let i = index" (click)="selectday(i)" style="background: linear-gradient(145deg, rgba(50, 70, 90, 1), rgba(25, 35, 50, 1)); padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); width: 18%; text-align: center; cursor: pointer;">
         <p class="day-name" style="font-size: 1.2rem; color: #ffcc00;">{{weather.date | date: 'EEE'}}</p>
         <p class="day-temp" style="font-size: 1.4rem; color: white; margin-top: 10px;">{{weather.day.avgtemp_c}}°C</p>
+        <!-- Max and Min Temp (smaller text) -->
+        <p class="day-temp-range" style="font-size: 0.9rem; color: #ffcc00; margin-top: 5px;">
+          {{weather.day.maxtemp_c}}°C | {{weather.day.mintemp_c}}°C
+        </p>
         <p class="day-desc" style="font-size: 1rem; color: rgb(255, 255, 255);">{{weather.day.condition.text}}</p>
       </div>
     </div>
