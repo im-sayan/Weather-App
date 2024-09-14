@@ -382,16 +382,16 @@ body {
   color: #ffcc00;
   font-size: 20px;
   cursor: pointer;
-  animation: glow 0.8s infinite alternate;
+  animation: glow 0.20s infinite alternate;
 }
 
 /* Glow keyframes */
 @keyframes glow {
   from {
-    text-shadow: 0 0 1px #ffcc00, 0 0 2px #ffcc00, 0 0 3px #ffcc00, 0 0 4px #ffcc00;
+    text-shadow: 0 0 0px #ffcc00, 0 0 1px #ffcc00, 0 0 2px #ffcc00, 0 0 3px #ffcc00;
   }
   to {
-    text-shadow: 0 0 15px #ffcc00, 0 0 30px #ffcc00, 0 0 45px #ffcc00, 0 0 55px #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 10px #ffcc00, 0 0 25px #ffcc00, 0 0 30px #ffcc00;
   }
 }
 
