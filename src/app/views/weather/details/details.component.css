@@ -4,8 +4,10 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f0f0f0; /* You can adjust the background color */
 }
-
 
 .container2 {
   background-color: rgb(23, 33, 49);
@@ -22,11 +24,12 @@ body {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;
 }
+
 .container2::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari, Opera */
+  display: none; /* Chrome, Safari, Opera */
 }
 
-
+/* Modal adjustments for responsiveness */
 .modal {
   background-color: #172131;
   padding: 30px;
@@ -56,9 +59,8 @@ body {
   scrollbar-width: none; 
 }
 
-
 .modal-body::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari, Opera */
+  display: none; /* Chrome, Safari, Opera */
 }
 
 h2#city-name {
@@ -149,11 +151,65 @@ p#date {
   text-align: right; /* Align text to the right */
 }
 
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .container2 {
+    padding: 20px;
+    max-width: 90%;
+  }
 
+  .modal {
+    padding: 20px;
+    max-width: 95%;
+  }
 
-/* *
-*
-*
-*
-* */
+  .hour {
+    flex-direction: column; /* Stack columns vertically */
+    gap: 10px;
+    max-width: 100%;
+    padding: 10px;
+  }
 
+  .hour-time,
+  .hourly-icon,
+  .hour-temp,
+  .hour-desc,
+  .hour-humidity,
+  .hour-wind {
+    flex: 1; /* Adjust columns to take up equal space */
+    text-align: center; /* Center text for better mobile experience */
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+
+  h2#city-name {
+    font-size: 2rem; /* Adjust city name size for mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .container2 {
+    padding: 15px;
+    max-width: 95%;
+  }
+
+  .modal-header {
+    font-size: 1.8rem; /* Reduce modal header size on small screens */
+  }
+
+  .modal-body {
+    padding: 15px;
+  }
+
+  .hourly-weather {
+    gap: 10px; /* Reduce gap for small screens */
+  }
+
+  .hour {
+    padding: 10px; /* Reduce padding */
+  }
+
+  h2#city-name {
+    font-size: 1.8rem; /* Smaller city name */
+  }
+}

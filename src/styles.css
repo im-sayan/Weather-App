@@ -29,7 +29,8 @@ body.landingpage {
 
 .giphy-embed {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   object-fit: cover;
   max-width: 100%; /* Add this to prevent the GIF from exceeding the container's width */
+  max-height: 100%;
 }

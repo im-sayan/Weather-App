@@ -9,7 +9,7 @@
   <!-- Content -->
   <div *ngIf="!loading">
     <div class="search-box" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-      <input type="text" placeholder="Search by city(state/region), ZIP code, or lat/lon" id="location" [(ngModel)]="searchQuery" (keyup.enter)="searchlocation()" style="padding: 10px; width: 60%; border-radius: 10px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" />
+      <input type="text" placeholder="Search by city(state/region), ZIP code, or Coordinate" id="location" [(ngModel)]="searchQuery" (keyup.enter)="searchlocation()" style="padding: 10px; width: 60%; border-radius: 10px; border: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" />
       <button (click)="searchlocation()" style="margin-left: 10px; background-color: #ffcc00; border: none; border-radius: 10px; padding: 10px 20px; color: white; cursor: pointer;">
         <i class="fas fa-search"></i>
       </button>
@@ -28,9 +28,16 @@
           <div class="alert-popup">
             <ul style="list-style-type: none; padding: 0; margin: 0;">
               <li *ngFor="let alert of alerts" style="margin-bottom: 10px; align-items: left; text-align: left;">
-                <strong style="color:rgb(235, 145, 60);">Title:- {{ alert.category }}</strong> <br>
-                <strong style="color:rgb(243, 89, 34);">Alert:- {{ alert.event }}</strong> <br>
-                <strong>Description:</strong><p style="font-size: 0.8rem;">{{ alert.desc }}</p><br>
+                <strong style="color:rgb(255, 149, 135);">Headline:- {{ alert.headline ? alert.headline : 'NA' }}</strong> <br>
+                <strong style="color:rgb(235, 145, 60);">Category:- {{ alert.category ? alert.category : 'NA'}}</strong> <br>
+                <strong style="color:rgb(243, 89, 34);">Severity:- {{ alert.severity ? alert.severity : 'NA' }}</strong> <br>
+                <strong style="color:rgb(243, 89, 34);">Event:- {{ alert.event ? alert.event :'NA'}}</strong> <br>
+                <strong style="color:rgb(69, 206, 103);">Urgency:- {{ alert.urgency ? alert.urgency :'NA'}}</strong> <br>
+                <strong style="color:rgb(231, 233, 119);">Areas:- {{ alert.areas ? alert.areas : 'NA' }}</strong> <br>
+                <strong style="color:rgb(56, 153, 61);">Start:- {{ alert.effective ? (alert.effective | date: 'MMM d, y, h:mm a') : 'NA' }}</strong> <br>
+                <strong style="color:rgb(95, 132, 235);">End:- {{ alert.expires ? (alert.expires | date: 'MMM d, y, h:mm a') : 'NA' }}</strong> <br>
+                <strong style="color:rgb(170, 246, 252);">Instruction:- {{ alert.instruction ? alert.instruction :'NA'}}</strong> <br>
+                <strong style="color:rgb(24, 100, 81);">Description:</strong><p style="font-size: 0.9rem; color:rgb(235, 235, 235);">{{ alert.desc }}</p><br>
               </li>
             </ul>
           </div>

@@ -15,8 +15,26 @@ export class DetailsComponent implements OnInit{
 
   constructor(private http: HttpClient, private toastr: ToastrService, private router: Router) {}
       
-    ngOnInit(): void{
+  ngOnInit(): void {
+    // First check if selectedDay exists in history.state
+    if (history.state.selectedDay) {
       this.selectedDay = history.state.selectedDay;
-      this.locationDetails = JSON.parse(localStorage.getItem('location') || '{}');
+    } else {
+      // Retrieve selectedDay from localStorage if it's stored previously
+      const storedDay = localStorage.getItem('selectedDay');
+      if (storedDay) {
+        this.selectedDay = JSON.parse(storedDay);
+      } else {
+        // If no selectedDay is found, navigate to home
+        this.router.navigate(['']);
+      }
     }
+  
+    // Retrieve locationDetails from localStorage
+    this.locationDetails = JSON.parse(localStorage.getItem('location') || '{}');
+    console.log(this.selectedDay, "this.selectedDay");
+  }
+  
+  
+
 }
