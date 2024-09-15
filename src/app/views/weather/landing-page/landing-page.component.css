@@ -96,18 +96,19 @@ body {
 .forecast .day {
   flex: 1;
   margin: 0 8px;
-  padding: 10px;
-  width: 18%;
+  padding: 15px; /* Increase padding for more space */
+  width: 22%; /* Increase the width for better content fitting */
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.2);
   text-align: center;
   transition: transform 0.3s ease;
   cursor: pointer;
-  height: 140px;
+  height: 160px; /* Slightly increase the height for larger content */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 
 .forecast .day:hover {
   transform: translateY(-10px);

@@ -17,11 +17,15 @@
             <!-- <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;" *ngIf="IsDay == 0">📍 Location <i class="fas fa-moon" style="padding-left: 18px;"></i>Night</p> -->
             <h3 id="city-name" style="margin-bottom: 10px; font-weight: 600;">{{locationDetails.name}} ({{locationDetails.region}})</h3>
             <p id="date" style="margin-bottom: 20px; font-size: 1rem; color: rgba(255, 255, 255, 0.7);">{{locationDetails.localtime | date:'EEEE, MMMM d, y'}}</p>
+            
             <p id="avg-temp" style="margin-bottom: 10px; font-size: 1.1rem; color: #ffcc00;">
-              Temp: {{selectedDay.day.avgtemp_c}}°C
+              Temp: {{selectedDay.day.avgtemp_c}} °C
             </p>
-            <p id="temp-range" style="margin-bottom: 10px; font-size: 1rem; color: rgba(255, 255, 255, 0.9);">
-              Max Temp: {{selectedDay.day.maxtemp_c}}°C | Min Temp: {{selectedDay.day.mintemp_c}}°C
+            <p style="margin-bottom: -5px; margin-top: -15px;">
+              <img [src]="selectedDay.day.condition.icon" alt="weather icon" style="width: 40px; height: 40px;" />
+            </p>
+            <p id="temp-range" style="margin-bottom: -5px; font-size: 1rem; color: rgba(255, 255, 255, 0.9);">
+              <i class="fa-solid fa-arrow-up" style="color: rgb(235, 91, 34);"></i> {{selectedDay.day.maxtemp_c}} °C  <i class="fa-solid fa-arrow-down" style="color: #3498db;"></i> {{selectedDay.day.mintemp_c}} °C
             </p>
             <p id="date" style="margin-bottom: 20px; font-size: 1.3rem; color: rgba(255, 255, 255, 0.7);">Chance of Rain: {{selectedDay.day.daily_chance_of_rain}} %</p>
           </div>
@@ -31,7 +35,7 @@
         <div class="right-section" style="flex: 1; padding: 15px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 15px; display: flex; flex-direction: column;">
           <div class="card" style="color: white; background: transparent; border: none; box-shadow: none; flex: 1;">
             <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">🌟 Astro Data</p>
-            <ul class="list-group list-group-flush" style="list-style-type: none; padding-left: 0;">
+            <ul class="list-group list-group-flush" style="list-style-type: none; padding-left: 0; font-size: 1.2rem;">
               <li class="list-group-item" style="background-color: transparent; color: white; padding: 10px 0; border: none;">
                 <i class="fas fa-sun"></i> Sunrise: {{selectedDay.astro.sunrise}}
               </li>
