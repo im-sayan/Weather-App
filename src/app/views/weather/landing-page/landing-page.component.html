@@ -50,10 +50,11 @@
       <p id="date" style="font-size: 1.2rem; margin-bottom: 30px;">{{apiData.location.localtime | date: 'EEEE, MMMM d, y'}}</p>
 
       <p id="temp" style="font-size: 3rem; font-weight: 700; margin-top: 20px;">{{apiData.current.temp_c}}°C</p>
+      <p id="description" style="font-size: 1.2rem; font-weight: 400;">Condition: {{apiData.current.condition.text}}</p>
       <p id="temp-range" style="font-size: 1.2rem; font-weight: 700; margin-top: 10px; color: #ffcc00">
         Max: {{apiData.forecast.forecastday[0].day.maxtemp_c}}°C | Min: {{apiData.forecast.forecastday[0].day.mintemp_c}}°C
       </p>
-      <p id="description" style="font-size: 1.2rem; font-weight: 400;">{{apiData.current.condition.text}}</p>
+      
   
       <p id="temp" style="font-size: 1.2rem; font-weight: 700; margin-top: 20px;">
         Air Quality: {{aiq}}

@@ -17,10 +17,10 @@
             <h3 id="city-name" style="margin-bottom: 10px; font-weight: 600;">{{locationDetails.name}} ({{locationDetails.region}})</h3>
             <p id="date" style="margin-bottom: 20px; font-size: 1rem; color: rgba(255, 255, 255, 0.7);">{{locationDetails.localtime | date:'EEEE, MMMM d, y'}}</p>
             <p id="avg-temp" style="margin-bottom: 10px; font-size: 1.1rem; color: #ffcc00;" *ngIf="IsDay == 1">
-              Avg Temp: {{selectedDay.day.avgtemp_c}}°C <i class="fas fa-sun" style="padding-left: 8px;"></i>
+              Temp: {{selectedDay.day.avgtemp_c}}°C <i class="fas fa-sun" style="padding-left: 18px;"></i>
             </p>
             <p id="avg-temp" style="margin-bottom: 10px; font-size: 1.1rem; color: #ffcc00;" *ngIf="IsDay == 0">
-              Avg Temp: {{selectedDay.day.avgtemp_c}}°C <i class="fa-solid fa-moon" style="padding-left: 8px;"></i>
+              Temp: {{selectedDay.day.avgtemp_c}}°C  Night<i class="fa-solid fa-moon" style="padding-left: 18px;"></i>
             </p>
             <p id="temp-range" style="margin-bottom: 10px; font-size: 1rem; color: rgba(255, 255, 255, 0.9);">
               Max Temp: {{selectedDay.day.maxtemp_c}}°C | Min Temp: {{selectedDay.day.mintemp_c}}°C
@@ -47,7 +47,7 @@
                 <i class="fa-solid fa-cloud-moon"></i> Moonset: {{selectedDay.astro.moonset}}
               </li>
               <li class="list-group-item" style="background-color: transparent; color: white; padding: 10px 0; border: none;">
-                <i class="fa-duotone fa-solid fa-moon"></i> Moon Phase: {{selectedDay.astro.moon_phase}}
+                🌕 Moon Phase: {{selectedDay.astro.moon_phase}}
               </li>
             </ul>
           </div>
@@ -66,12 +66,13 @@
         <div class="hourly-weather">
           <!-- Column Headers -->
           <div class="hourly-headers" style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px; background-color: rgba(45, 59, 74, 0.8); border-radius: 10px; z-index: 1;">
-            <div class="header-time" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: left;">Time</div>
-            <div class="header-temp" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: center;">Temp</div>
-            <div class="header-desc" style="flex: 2; color: #ffcc00; font-weight: bold; text-align: center;">Condition</div>
-            <div class="header-humidity" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: right;">Precipitation</div>
-            <div class="header-humidity" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: right;">Humidity</div>
-            <div class="header-wind" style="flex: 1; color: #ffcc00; font-weight: bold; text-align: right;">Wind Speed</div>
+            <div class="header-time" style="flex-basis: 10%; color: #ffcc00; font-weight: bold; text-align: left; padding-right: 5px;">Time</div>
+            <div class="header-temp" style="flex-basis: 15%; color: #ffcc00; font-weight: bold; text-align: center; padding-right: 5px;">Temp</div>
+            <div class="header-desc" style="flex-basis: 20%; color: #ffcc00; font-weight: bold; text-align: center; padding-right: 5px;">Condition</div>
+            <div class="header-precip" style="flex-basis: 15%; color: #ffcc00; font-weight: bold; text-align: center; padding-right: 5px;">Precipitation</div>
+            <div class="header-rain-prob" style="flex-basis: 15%; color: #ffcc00; font-weight: bold; text-align: center; padding-right: 5px;">Rain Prob.</div>
+            <div class="header-humidity" style="flex-basis: 15%; color: #ffcc00; font-weight: bold; text-align: center; padding-right: 5px;">Humidity</div>
+            <div class="header-wind" style="flex-basis: 13%; color: #ffcc00; font-weight: bold; text-align: center;">Wind Speed</div>
           </div>
       
           <!-- Scrollable Hourly Weather Data -->
@@ -83,18 +84,20 @@
                 background: transparent; /* Optional: to hide the scrollbar track */
               }
             </style>
-            <div class="hour" *ngFor="let weather of selectedDay.hour; let i = index" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 15px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
-              <div class="hour-time" style="flex: 1; color: white; font-weight: bold; font-size: 1rem;">{{ weather.time | date: 'shortTime' }}</div>
-              <div class="hour-temp" style="flex: 1.5; color: #ffcc00; font-weight: bold; font-size: 1.2rem; text-align: center;">{{weather.temp_c}}°C</div>
-              <div class="hour-desc" style="flex: 2.1; color: white; font-size: 1rem; text-align: center;">{{weather.condition.text}}</div>
-              <div class="hour-rain" style="flex: 2.1; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: right;">⛈️ {{weather.precip_mm}} mm</div>
-              <div class="hour-humidity" style="flex: 1.2; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: right;">💧 {{weather.humidity}}%</div>
-              <div class="hour-wind" style="flex: 1; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: right;">🌬️ {{weather.wind_kph}} kph</div>
+            <div class="hour" *ngFor="let weather of selectedDay.hour; let i = index" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+              <div class="hour-time" style="flex-basis: 10%; color: white; font-weight: bold; font-size: 1rem; text-align: left; padding-right: 5px;">{{ weather.time | date: 'shortTime' }}</div>
+              <div class="hour-temp" style="flex-basis: 10%; color: #ffcc00; font-weight: bold; font-size: 1.2rem; text-align: center; padding-right: 5px;">{{weather.temp_c}}°C</div>
+              <div class="hour-desc" style="flex-basis: 20%; color: white; font-size: 1rem; text-align: center; padding-right: 5px;">{{weather.condition.text}}</div>
+              <div class="hour-precip" style="flex-basis: 15%; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: center; padding-right: 5px;">⛈️ {{weather.precip_mm}} mm</div>
+              <div class="hour-rain-prob" style="flex-basis: 15%; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: center; padding-right: 5px;">☔ {{weather.chance_of_rain}} %</div>
+              <div class="hour-humidity" style="flex-basis: 10%; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: center; padding-right: 5px;">💧 {{weather.humidity}}%</div>
+              <div class="hour-wind" style="flex-basis: 10%; color: rgb(255, 255, 255); font-size: 0.9rem; text-align: center;">🌬️ {{weather.wind_kph}} kph</div>
             </div>
           </div>
-      
         </div>
       </div>
+      
+      
       
     </div>
   </div>
