@@ -13,14 +13,12 @@
         <!-- Left Section: City Name and Date -->
         <div class="left-section" style="flex: 1; padding: 20px; background: linear-gradient(145deg, rgba(45, 59, 74, 1), rgba(34, 47, 63, 1)); border-radius: 15px; display: flex; flex-direction: column;">
           <div class="card" style="color: white; background: transparent; border: none; box-shadow: none; flex: 1;">
-            <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">📍 Location</p>
+            <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">📍 Location </p>
+            <!-- <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;" *ngIf="IsDay == 0">📍 Location <i class="fas fa-moon" style="padding-left: 18px;"></i>Night</p> -->
             <h3 id="city-name" style="margin-bottom: 10px; font-weight: 600;">{{locationDetails.name}} ({{locationDetails.region}})</h3>
             <p id="date" style="margin-bottom: 20px; font-size: 1rem; color: rgba(255, 255, 255, 0.7);">{{locationDetails.localtime | date:'EEEE, MMMM d, y'}}</p>
-            <p id="avg-temp" style="margin-bottom: 10px; font-size: 1.1rem; color: #ffcc00;" *ngIf="IsDay == 1">
-              Temp: {{selectedDay.day.avgtemp_c}}°C <i class="fas fa-sun" style="padding-left: 18px;"></i>
-            </p>
-            <p id="avg-temp" style="margin-bottom: 10px; font-size: 1.1rem; color: #ffcc00;" *ngIf="IsDay == 0">
-              Temp: {{selectedDay.day.avgtemp_c}}°C <i class="fa-solid fa-moon" style="padding-left: 18px;"></i>
+            <p id="avg-temp" style="margin-bottom: 10px; font-size: 1.1rem; color: #ffcc00;">
+              Temp: {{selectedDay.day.avgtemp_c}}°C
             </p>
             <p id="temp-range" style="margin-bottom: 10px; font-size: 1rem; color: rgba(255, 255, 255, 0.9);">
               Max Temp: {{selectedDay.day.maxtemp_c}}°C | Min Temp: {{selectedDay.day.mintemp_c}}°C
