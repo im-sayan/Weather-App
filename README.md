@@ -2,12 +2,16 @@
 
 This is a Weather Report App. In this application,  you can see the current weather report and also the 5-day forecast, the forecast block is clickable and it shows hourly forecast reports. If the search or the current location has any weather alert then an alert icon will blink in the top right, when you hover it it will show the details.
 
+
+### Demo
+checkout the application visit this URL https://weatherapplication-bba5b.web.app/
  
 ### Screenshots
 
 ![Weather App Screenshot](https://github.com/im-sayan/Weather-App/blob/main/src/assets/images/Screenshot%20from%202024-09-15%2020-53-35.png)
 ![Weather App Screenshot](https://github.com/im-sayan/Weather-App/blob/main/src/assets/images/Screenshot%20from%202024-09-15%2020-53-51.png)
 ![Weather App Screenshot](https://github.com/im-sayan/Weather-App/blob/main/src/assets/images/Screenshot%20from%202024-09-15%2020-53-57.png)
+
 
 
 ### Prerequisites
