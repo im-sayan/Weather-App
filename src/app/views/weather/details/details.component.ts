@@ -38,7 +38,9 @@ export class DetailsComponent implements OnInit{
     console.log(this.IsDay,"this.IsDay");
     
   }
-  
+  backToforcast() {
+    this.router.navigate(['']);
+  }
   
 
 }

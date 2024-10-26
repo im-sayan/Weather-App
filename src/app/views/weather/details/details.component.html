@@ -6,6 +6,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="border-bottom: none;">
+        <button [matTooltipDisabled]="false"
+         matTooltip="Go back"
+         matTooltipPosition="above" style="background-color: #007bff38; border: none; border-radius: 50%; color: white; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;margin-bottom: -90px;" (click)="backToforcast()">
+          <!-- <i class="fas fa-location" style="font-size: 20px;"></i> -->
+          <i class="fa-solid fa-circle-arrow-left" style="font-size: 25px; color: #ffbb00;"></i>
+        </button>
         <h5 id="detailsLabel" style="color: #ffbb00">Hourly Forecast</h5>
       </div>
 

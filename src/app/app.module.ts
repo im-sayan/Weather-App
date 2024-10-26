@@ -9,7 +9,8 @@ import { LandingPageComponent } from '../app/views/weather/landing-page/landing-
 import {DetailsComponent} from '../app/views/weather/details/details.component'
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
     GoogleMapsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
     FormsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
